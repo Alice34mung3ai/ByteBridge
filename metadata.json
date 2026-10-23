@@ -1,0 +1,6 @@
+{
+  "name": "Azure Exam Flight Deck",
+  "description": "Unofficial AI-powered study companion for beginners preparing for the AZ-900 Azure Fundamentals certification.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

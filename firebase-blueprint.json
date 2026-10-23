@@ -1,0 +1,45 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile information and certification preparation metadata",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The user's unique Firebase Auth identifier" },
+        "displayName": { "type": "string", "description": "User display name" },
+        "email": { "type": "string", "description": "User email address" },
+        "photoURL": { "type": "string", "description": "User avatar URL" },
+        "createdAt": { "type": "string", "description": "ISO timestamp of account creation" },
+        "lastLoginAt": { "type": "string", "description": "ISO timestamp of last login" }
+      },
+      "required": ["uid", "email"]
+    },
+    "FlightTelemetry": {
+      "title": "FlightTelemetry",
+      "description": "AZ-900 exam flight deck progress, quiz records, and flashcard mastery",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner user ID" },
+        "questionsAttempted": { "type": "number", "description": "Total number of quiz questions answered" },
+        "questionsCorrect": { "type": "number", "description": "Total number of correct quiz answers" },
+        "domainStats": { "type": "object", "description": "Performance breakdown by AZ-900 exam domain" },
+        "topicStats": { "type": "object", "description": "Performance breakdown by specific topic" },
+        "missedConcepts": { "type": "object", "description": "Registry of concepts previously missed in quizzes" },
+        "flashcardStates": { "type": "object", "description": "Active recall review states for flashcards" },
+        "studyStreakDays": { "type": "number", "description": "Consecutive days study streak count" },
+        "updatedAt": { "type": "string", "description": "ISO timestamp of latest update" }
+      },
+      "required": ["userId", "questionsAttempted", "questionsCorrect"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User account document containing basic profile data"
+    },
+    "/users/{userId}/telemetry/{telemetryId}": {
+      "schema": "FlightTelemetry",
+      "description": "User AZ-900 flight deck study telemetry and sync records"
+    }
+  }
+}
